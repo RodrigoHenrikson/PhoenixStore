@@ -1,0 +1,16 @@
+---EN CONSOLA---
+npm init -y
+
+npm i express mongoose
+
+
+-----TYPESCRIPT------
+
+npm i -D typescript @types/express @types/node @types/mongoose
+
+npx tsc --init
+
+- package.json
+"build": "npx tsc",
+"dev": "node dist/index",
+"start": "npm run build && npm run dev",
