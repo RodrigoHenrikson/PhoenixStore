@@ -1,0 +1,6 @@
+/               => Listado de Cards
+/alta           => Formulario de alta
+/contacto       => Formulario de contacto
+/nosotros       => Página Acerca de
+
+/detalle/:id    => Detalle de card

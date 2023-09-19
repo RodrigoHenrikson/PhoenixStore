@@ -1,0 +1,17 @@
+<App>
+    <MainLayout>
+
+    
+        <BaseForm>
+            <FormContext.Provider>
+                <FormField />
+            </FormContext.Provider>
+        </BaseForm>
+
+
+        <CardList>
+            <Preloader />
+            <Card />
+        </CardList>
+    </MainLayout>
+</App>

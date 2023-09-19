@@ -1,0 +1,5 @@
+1) Instalar react-router-dom
+
+2) Crear el router (createBrowserRouter)
+
+3) Usar RouterProvider para renderizar en función del createBrowserRouter

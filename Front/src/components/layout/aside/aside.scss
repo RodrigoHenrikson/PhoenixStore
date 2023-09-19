@@ -1,0 +1,9 @@
+@import '/src/components/layout/main/MainLayout.scss';
+
+.sidebar {
+  width: 20%;
+  background-color: #1869e3;
+  background-image: url(../../../../public/img/hotsale.jpg);
+  background-size: contain;
+  background-repeat: repeat;
+}

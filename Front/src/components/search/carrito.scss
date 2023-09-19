@@ -1,0 +1,17 @@
+@import '/src/components/layout/main/MainLayout.scss';
+
+.carrito-container {
+    background-image: url(../../../public/img/carrito.png);
+    height: 20px;
+    width: 20px;
+    z-index: 110;
+    position: absolute;
+    background-size: cover;
+    color: wheat;
+    background-color: #fff;
+    padding: 6px;
+    border: 3px solid #76287c;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+  }

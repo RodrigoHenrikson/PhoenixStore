@@ -1,0 +1,24 @@
+
+<MainLayout>
+            HEADER 1
+
+            <Container>
+                    <main__cards>
+                                <header section cards header>
+                                        <h1></h1>
+                                        <p></p>
+                                 </header section cards header>
+
+                                <section section-cards>
+                                        <div cards container>
+                                                <CARDS>
+                                        </div>
+                                </section section-cards>
+
+                    <main__cards>
+
+                    <Aside>
+            </Container>
+
+
+</MainLayout>

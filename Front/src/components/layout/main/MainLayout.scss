@@ -1,0 +1,278 @@
+
+
+$color-fondo: antiquewhite;
+$color-primario: #551a8b;
+$color-secundario: black;
+$color-hover: #76287c;
+$color-texto: #fff;
+$color-enlace: #1869e3;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-image: url(../../../../public/img/fondo1.jpg);
+  background-repeat: no-repeat;
+  font-family: 'Archivo', sans-serif;
+}
+
+
+.carrito-container {
+  background-image: url(../../../../public/img/carrito.png);
+  height: 20px;
+  width: 20px;
+  z-index: 110;
+  position: absolute;
+  background-size: cover;
+  color: wheat;
+  background-color: #fff;
+  padding: 6px;
+  border: 3px solid #76287c;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+
+
+
+
+.container {
+  display: flex;
+}
+
+main {
+  width: 80%;
+  background-color: $color-fondo;
+}
+
+
+
+.main__cards {
+  background-color: $color-fondo;
+  border-radius: 3px;
+}
+
+.section-cards__header {
+  height: 7rem;
+  background-color: $color-secundario;
+  color: $color-primario;
+  padding: 15px;
+  overflow-x: hidden;
+  box-sizing: border-box;
+
+  h1 {
+    font-size: 45px;
+  }
+
+  p {
+    font-size: 20px;
+  }
+}
+
+
+
+// ---------------CARDS barra busqueda y Conteiner------------
+
+.barraBusqueda input {
+  font-size: 16px;
+  height: 1.3em;
+  margin: 10px;
+  padding: 3px;
+  border: 2px solid black;
+  position: absolute;
+  left: 100px;
+  
+}
+
+.cards__container {
+ display: flex;
+ flex-wrap: wrap;
+ margin: 20px;
+ align-items: center;
+ justify-content: center;
+ margin-top: 20px;
+}
+
+
+
+
+
+
+//   -------FORMULARIO (NO LOS SEPARO EN 2 SCSS PORQUE COMPARTEN ESTILOS LOS 2 FORMS-------------
+
+.fmr__alta {
+    padding: 30px;
+    margin: auto;
+    border-radius: 3px;
+    display: inline-block;
+    color: #551a8b;
+  }
+  
+  #frmContacto {
+    padding: 30px;
+    border-radius: 3px;
+    margin: auto;
+    border-radius: 3px;
+  }
+  
+  .frmLabel {
+    font-size: 2rem;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 2px;
+    margin-top: 10px;
+    color: #551a8b;
+  }
+  
+  #descripcion_larga {
+    width: 100%;
+    height: 15rem;
+  }
+  
+  #checkbox_envio[type="checkbox"] {
+    transform: scale(2.5);
+  }
+  
+  .siyno {
+    text-align: center;
+    margin: 15px;
+    font-size: 1.3rem;
+  }
+  
+  .field {
+    margin-left: 10px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    width: 100%;
+  
+    &:focus {
+      border-color: $color-hover;
+      border: 2px solid;
+    }
+  }
+  
+  .btn__form {
+    padding: 10px 30px;
+    margin-top: 20px;
+    color: $color-texto;
+    text-decoration: none;
+    background: $color-enlace;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 10rem;
+    height: 4rem;
+    border: 1px solid black;
+    font-weight: bold;
+    font-size: 1.5rem;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  
+//   ---------BREAKPOINTS--------
+
+@media (max-width: 768px) {
+    .nameandlogo__container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .name__Phoenix {
+      margin-top: 90px;
+      position: static;
+      font-size: 3rem;
+    }
+    
+    .logo img {
+      position: static;
+      width: 200px;
+      top: 20px;
+      z-index: 10;
+    }
+    
+    .nav-bar__nav-list {
+      top: 180px;
+    }
+    
+    .nav-bar__nav-item {
+      font-size: 12px;
+      margin: 5px;
+    }
+    
+    .carrito-container {
+      height: 5px;
+      width: 10px;
+    }
+
+   
+    
+    .sidebar {
+      display: none;
+    }
+    
+    main {
+      width: 100%;
+    }
+    
+    .search-bar__carrito-container {
+      transform: scale(0.7);
+      top: 1px;
+      margin-right: -70px;
+    }
+    
+    .cards__container {
+      justify-content: center;
+    }
+
+    .nosotros__p {
+      font-size: 1.5rem;
+    }
+
+  }
+
+  
+  
+  @media (max-width: 992px) and (min-width: 769px) {
+    .name__Phoenix {
+      margin-top: 90px;
+      position: static;
+      font-size: 3rem;
+      border: 6px dashed;
+    }
+    
+    .logo img {
+      position: static;
+      z-index: 10;
+    }
+    
+    .nav-bar__nav-list {
+      font-size: 30px;
+      margin-top: -175px;
+    }
+    
+    .carrito-container {
+      height: 10px;
+      width: 10px;
+    }
+    
+    .cards__container {
+      justify-content: center;
+    }
+  }
+  
+  

@@ -1,0 +1,23 @@
+@import '/src/components/layout/main/MainLayout.scss'; 
+
+footer {
+    padding: 30px;
+    text-align: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1rem;
+    color: $color-primario;
+    font-weight: bold;
+    background-color: $color-secundario;
+  
+    a {
+      text-decoration: none;
+      margin: 20px 10px;
+      color: inherit;
+    }
+  
+    p {
+      margin: 15px 0;
+    }
+  };

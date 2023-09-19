@@ -1,0 +1,95 @@
+@import '/src/components/layout/main/MainLayout.scss'; 
+
+//ERROR al pasar los estilos de cards del main scss --- 
+
+
+.card {
+    width: 320px;
+    height: 470px;
+    background: $color-primario;
+    border-radius: 20px;
+    border: 2px solid black;
+    margin: 20px;
+    margin-top: 25px;
+   
+   
+    
+   .card__img {
+      width: 80%;
+      height: 204px;
+      display: flex;
+      justify-content: center;
+      padding-top: 20px;
+      margin: auto;
+      margin-top: 5px;
+      
+   
+      img {
+        max-width: 80%;
+        border: 2px solid black;
+      }
+    }
+   
+      .card__item {
+      
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      
+   
+      h3 {
+        font-size: 35px;
+        color: $color-texto;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 2px;
+        font-family: 'Trebuchet MS', Arial, sans-serif;
+      }
+      
+      h4 {
+        font-size: 13px;
+        padding: 5px;
+        margin-top: 1px;
+        height: 38px;
+        
+      }
+   
+      .item__price {
+        font-size: 30px;
+        color: $color-texto;
+        font-weight: bold;
+        letter-spacing: 1px;
+        margin-bottom: 0px;
+        font-family: 'Trebuchet MS', Arial, sans-serif;
+      }
+   
+      .btn__Buy {
+              
+        padding: 10px 30px;
+        margin-top: 23px;
+        color: $color-texto;
+        text-decoration: none;
+        font-weight: bold;
+        background: $color-enlace;
+        border-radius: 5px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: 2px solid black;
+         
+   
+      }
+       
+      .btn__Buy a {
+        color: $color-secundario; 
+        font-weight: bold;
+        text-decoration: none;
+      }
+       
+      &:hover .btn__Buy {
+        border: 1px solid $color-fondo;
+      }
+    }}
+   
