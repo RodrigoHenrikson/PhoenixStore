@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Componentalta = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +11,7 @@ const Componentalta = () => {
     descripcion_corta: '',
     descripcion_larga: '',
     envio_sin_cargo: '',
-    foto: null
+    foto: '',
   });
 
   const handleInputChange = (event) => {
@@ -18,11 +19,11 @@ const Componentalta = () => {
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Validar los campos del formulario
-    if (formData.nombre.trim().length < 2 || !/^[a-zA-Z\s]+$/.test(formData.nombre)) {
+    if (formData.nombre.trim().length < 3 || !/^[a-zA-Z\s]+$/.test(formData.nombre)) {
       alert('El campo de nombre debe tener al menos 3 caracteres y solo puede contener letras mayúsculas, minúsculas y espacios.');
       return;
     }
@@ -62,25 +63,52 @@ const Componentalta = () => {
       return;
     }
 
-    
-    alert('Formulario enviado correctamente.');
+    // Crear un objeto FormData para enviar la imagen
+    const formDataToSend = new FormData();
+    formDataToSend.append('nombre', formData.nombre);
+    formDataToSend.append('precio', formData.precio);
+    formDataToSend.append('stock', formData.stock);
+    formDataToSend.append('marca', formData.marca);
+    formDataToSend.append('categoria', formData.categoria);
+    formDataToSend.append('descripcion_corta', formData.descripcion_corta);
+    formDataToSend.append('descripcion_larga', formData.descripcion_larga);
+    formDataToSend.append('envio_sin_cargo', formData.envio_sin_cargo);
+    formDataToSend.append('foto', formData.foto);
 
-    // Se resetea el formulario
-    setFormData({
-      nombre: '',
-      precio: '',
-      stock: '',
-      marca: '',
-      categoria: '',
-      descripcion_corta: '',
-      descripcion_larga: '',
-      envio_sin_cargo: '',
-      foto: null
-    });
+    try {
+      // Enviar los datos al servidor
+      const response = await axios.post('/api/catalogo', formDataToSend, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      if (response.status === 200) {
+        alert('Producto agregado correctamente.');
+        // Restablecer el formulario
+        setFormData({
+          nombre: '',
+          precio: '',
+          stock: '',
+          marca: '',
+          categoria: '',
+          descripcion_corta: '',
+          descripcion_larga: '',
+          envio_sin_cargo: '',
+          foto: null,
+        });
+      } else {
+        alert('Hubo un problema al agregar el producto. Por favor, inténtalo nuevamente.');
+      }
+    } catch (error) {
+      console.error('Error al agregar el producto:', error);
+      alert('Hubo un error al agregar el producto. Por favor, inténtalo nuevamente.');
+    }
   };
 
   return (
-    <form className="fmr__alta" action="procesar_formulario.php" method="POST" encType="multipart/form-data" onSubmit={handleSubmit}>
+    <form className="fmr__alta" action="/catalogo" method="POST" encType="multipart/form-data" onSubmit={handleSubmit}>
+      {<form className="fmr__alta" action="procesar_formulario.php" method="POST" encType="multipart/form-data" onSubmit={handleSubmit}>
       <label className="frmLabel" htmlFor="nombre">Nombre:</label>
       <input className="field" type="text" id="nombre" name="nombre" value={formData.nombre} onChange={handleInputChange} required />
 
@@ -122,8 +150,12 @@ const Componentalta = () => {
 
       <br />
       <button className="btn__form" type="submit">Enviar</button>
+    </form>}
     </form>
   );
 };
 
 export default Componentalta;
+
+
+

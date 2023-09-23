@@ -2,8 +2,8 @@ const express = require('express');
 
 const storeRouter = express.Router();
 
-cardsRouter.get('/index', obtenercatalogooapi)
-cardsRouter.post('alta', agregarcard);
+cardsRouter.get('/index', catalogo)
+cardsRouter.post('alta', Alta);
 
 
 module.exports = storeRouter;
