@@ -1,18 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Importa Link desde react-router-dom
+import { Link } from "react-router-dom";
 import "./card.scss";
 
-const Card = ({ catalogoItem }) => {
+const Card = ({ catalogoItem, mostrarDescripcionLarga, customCSSClass }) => {
   if (!catalogoItem) {
     return null;
   }
 
-  console.log("Datos recibidos en Card:", catalogoItem);
-
-  const imageUrl = catalogoItem.foto; 
+  const imageUrl = catalogoItem.foto;
 
   return (
-    <div className="card">
+    <div className={`card ${customCSSClass}`}> {}
       <div className="card__img">       
         <img src={imageUrl} alt={catalogoItem.nombre} />
       </div>
@@ -21,6 +19,9 @@ const Card = ({ catalogoItem }) => {
         <h3>{catalogoItem.nombre}</h3>
         <h2 className="item__price">$ {catalogoItem.precio}</h2>
         <h4 className="item__descripcion">{catalogoItem.descripcion_corta}</h4>
+        {mostrarDescripcionLarga && (
+          <p className="item__descripcion-larga">{catalogoItem.descripcion_larga}</p>
+        )}
         <div className="btn__Buy">
           <Link to={`/detalle/${catalogoItem._id}`} className="link">
             Comprar
@@ -32,7 +33,6 @@ const Card = ({ catalogoItem }) => {
 };
 
 export default Card;
-
 
 
 

@@ -23,8 +23,12 @@ export default function Detalle() {
 
   return (
     <MainLayout pageTitle={"Detalle del Producto"} pageDescription={"Informate a fondo sobre el producto"}>
-      <div>Detalle</div>
-      {item === null ? <Preloader /> : <Card catalogoItem={item} />}
+      
+      {item === null ? <Preloader /> : <Card catalogoItem={item} mostrarDescripcionLarga={true} 
+                                        customCSSClass="detalle-card"  />
+
+}
+      
     </MainLayout>
   );
 }

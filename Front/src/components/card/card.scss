@@ -91,5 +91,43 @@
       &:hover .btn__Buy {
         border: 1px solid $color-fondo;
       }
-    }}
+      
+    }};
+
    
+   .detalle-card {
+    width: 620px;
+    height: auto;
+
+    
+    .card__img {
+      
+      height: 350px;
+      display: flex;
+      justify-content: center;
+      padding-top: 20px;
+      margin: auto;
+      margin-top: 5px;
+      width: 250px;
+   
+      img {
+        width: auto;
+        border: 4px solid black;
+      }
+    }
+
+    .card__item{
+    .item__price {
+      font-size: 45px;
+    }
+    h3{
+      font-size: 50px;
+    }
+    h4{
+      font-size: 30px;
+    }
+    p {
+      font-size: 28px;
+    }
+  }
+  }
