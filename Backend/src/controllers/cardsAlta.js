@@ -1,13 +1,10 @@
-const CardsAlta = require('../models/cardsAlta'); 
+const CardsAlta = require('../models/cardsAlta');
 const multer = require('multer');
-
 const cardsAltaController = {};
 
-const storage = multer.memoryStorage(); 
-const upload = multer({ storage });
 
 
-cardsAltaController.agregarProducto = upload.single('foto'), async (req, res) => {
+cardsAltaController.agregarProducto = async (req, res) => {
   try {
     const {
       nombre,

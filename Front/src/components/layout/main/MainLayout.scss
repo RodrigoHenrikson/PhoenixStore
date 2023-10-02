@@ -84,15 +84,19 @@ main {
 
 // ---------------CARDS barra busqueda y Conteiner------------
 
-.barraBusqueda input {
+.barraBusqueda {
+  
+
+  input {
   font-size: 16px;
   height: 1.3em;
   margin: 10px;
   padding: 3px;
   border: 2px solid black;
   position: absolute;
-  left: 100px;
-  
+  left: 20px;
+  top: 510px;
+}
 }
 
 .cards__container {

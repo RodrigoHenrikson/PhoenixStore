@@ -1,34 +1,34 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ResultadoBusqueda from "./ResultadosBusqueda";
 import BarraBusqueda from "./BarraBusqueda";
-import { FilterContext } from "./SearchContexts";
-import FilterProvider from "./FilterProvider";
+import { FilterProvider } from "./SearchContexts";
 
-//Listado de Productos Previo
+export default function Search() {
+  const [items, setItems] = useState([]);
+  const [dataLoaded, setDataLoaded] = useState(false);
 
-export default function Searc()
-{
-    const [items, setItems] = useState([]);
-    
-
-    useEffect(() =>
-    {
-        if (items.length == 0)
-        {
-            console.log('Cargando Items....');
-            fetch('https://645ec9f5f9c0732c342fcddc.mockapi.io/Productos')
-                .then(r => r.json())
-                .then(d => setItems(d))
-        }
+  useEffect(() => {
+    if (!dataLoaded) {
+      console.log("Cargando Items....");
+      axios
+        .get("http://localhost:5000/catalogo")
+        .then((response) => {
+          console.log("Datos del catálogo recibidos:", response.data);
+          setItems(response.data);
+          setDataLoaded(true);
+        })
+        .catch((error) => {
+          console.error("Error al obtener el catálogo", error);
+        });
     }
-    );
+  }, []);
 
-    return (
-        <div>
-            <FilterProvider>
-            <BarraBusqueda />
-            <ResultadoBusqueda items={items} />
-            </FilterProvider>
-        </div>
-    )
-};
+  return (
+    <div>
+      <FilterProvider>
+        <BarraBusqueda items={items} />
+        <ResultadoBusqueda items={items} />
+      </FilterProvider>
+    </div>
+  );
+}

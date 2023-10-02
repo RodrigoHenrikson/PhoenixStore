@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+
+
 
 const Componentalta = () => {
   const [formData, setFormData] = useState({
@@ -23,10 +24,10 @@ const Componentalta = () => {
     event.preventDefault();
 
     // Validar los campos del formulario
-    if (formData.nombre.trim().length < 3 || !/^[a-zA-Z\s]+$/.test(formData.nombre)) {
-      alert('El campo de nombre debe tener al menos 3 caracteres y solo puede contener letras mayúsculas, minúsculas y espacios.');
+    if (formData.nombre.trim().length < 3 || !/^[a-zA-Z0-9\s]+$/.test(formData.nombre)) {
+      alert('El campo de nombre debe tener al menos 3 caracteres y puede contener letras mayúsculas, minúsculas, números y espacios.');
       return;
-    }
+    }   
 
     if (!formData.precio) {
       alert('Por favor, ingresa un precio válido.');
@@ -63,7 +64,6 @@ const Componentalta = () => {
       return;
     }
 
-    // Crear un objeto FormData para enviar la imagen
     const formDataToSend = new FormData();
     formDataToSend.append('nombre', formData.nombre);
     formDataToSend.append('precio', formData.precio);
@@ -76,11 +76,10 @@ const Componentalta = () => {
     formDataToSend.append('foto', formData.foto);
 
     try {
-      // Enviar los datos al servidor
-      const response = await axios.post('/api/catalogo', formDataToSend, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
+     
+      const response = await fetch('http://localhost:5000/cardsAlta', {
+        method: 'POST',
+        body: formDataToSend,
       });
 
       if (response.status === 200) {
@@ -95,20 +94,27 @@ const Componentalta = () => {
           descripcion_corta: '',
           descripcion_larga: '',
           envio_sin_cargo: '',
-          foto: null,
+          foto: '',
         });
       } else {
         alert('Hubo un problema al agregar el producto. Por favor, inténtalo nuevamente.');
       }
     } catch (error) {
       console.error('Error al agregar el producto:', error);
-      alert('Hubo un error al agregar el producto. Por favor, inténtalo nuevamente.');
+      alert('Hubo un error al agregar el producto. Por favor');
+    } 
+    console.log(event.target)
+    const Fd = new FormData(event.target);
+    
+    // 1) For...of de keys 2) Verificar que estén todas las keys que se manden 3) Enviar con fetch, método POST y el formData como cuerpo (solo eso, sin headers)
+
+    for (const key of formDataToSend.keys()) {
+      console.log(`Key: ${key}, Valor: ${formDataToSend.get(key)}`);
     }
   };
 
   return (
-    <form className="fmr__alta" action="/catalogo" method="POST" encType="multipart/form-data" onSubmit={handleSubmit}>
-      {<form className="fmr__alta" action="procesar_formulario.php" method="POST" encType="multipart/form-data" onSubmit={handleSubmit}>
+    <form className="fmr__alta" action="http://localhost:5000/cardsAlta" method="POST" encType="multipart/form-data" onSubmit={handleSubmit}>
       <label className="frmLabel" htmlFor="nombre">Nombre:</label>
       <input className="field" type="text" id="nombre" name="nombre" value={formData.nombre} onChange={handleInputChange} required />
 
@@ -150,8 +156,8 @@ const Componentalta = () => {
 
       <br />
       <button className="btn__form" type="submit">Enviar</button>
-    </form>}
     </form>
+    
   );
 };
 

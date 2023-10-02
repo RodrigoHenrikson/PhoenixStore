@@ -2,7 +2,7 @@ import { useSearchParams } from "react-router-dom";
 import MainLayout from "../components/layout/main/MainLayout";
 import CardList from "../components/card-list/CardList";
 import FilterProvider from "../components/search/FilterProvider";
-import BarraBusqueda from "../components/card-list/CardList";
+
 
 
 /**
