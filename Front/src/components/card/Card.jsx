@@ -1,7 +1,11 @@
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom"; // Importa Link desde react-router-dom
 import "./card.scss";
 
 const Card = ({ catalogoItem }) => {
+  if (!catalogoItem) {
+    return null;
+  }
 
   console.log("Datos recibidos en Card:", catalogoItem);
 

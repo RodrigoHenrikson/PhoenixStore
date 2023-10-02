@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const contactoRouter = require('./routes/contacto');
 const catalogoRouter = require('./routes/catalogo');
 const cardsAltaRouter = require('./routes/cardsAlta');
+const detalleRouter = require('./routes/detalle');
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use('/contacto', contactoRouter);
 app.use('/catalogo', catalogoRouter);
 app.use('/cardsAlta', cardsAltaRouter);
+app.use('/detalle', detalleRouter);
 
 mongoose
   .connect(

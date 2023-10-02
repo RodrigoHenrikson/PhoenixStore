@@ -1,35 +1,30 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import MainLayout from "../components/layout/main/MainLayout";
 import Card from "../components/card/Card";
-import { useParams } from "react-router";
 import Preloader from "../components/preloader/Preloader";
+import { useParams } from "react-router-dom"; 
 
-/**
- * Contexts: RouterPovider
- */
-export default function Detalle()
-{
-    const [item, setItem] = useState(null);
-    const params = useParams();
+export default function Detalle() {
+  const [item, setItem] = useState(null);
+  const { id } = useParams(); 
 
-    const id = params.id;
+  useEffect(() => {
+    if (item === null) {
+      
+       fetch(`http://localhost:5000/detalle/${id}`)
+       
+        .then((res) => res.json())
+        .then((datos) => setItem(datos))
+        .catch((error) => {
+          console.error("Error al obtener el detalle", error);
+        });
+    }
+  }, [id, item]);
 
-    useEffect(() =>
-    {
-        if (item == null)
-            fetch('https://645ec9f5f9c0732c342fcddc.mockapi.io/Productos/'+id)
-                .then(res => res.json())
-                .then(datos => setItem(datos))
-    })
-
-    return (
-        <MainLayout>
-            <div>Detalle</div>
-            {
-                item == null ? <Preloader /> : (
-                    <Card item={item} />
-                )
-            }
-        </MainLayout>
-    )
+  return (
+    <MainLayout pageTitle={"Detalle del Producto"} pageDescription={"Informate a fondo sobre el producto"}>
+      <div>Detalle</div>
+      {item === null ? <Preloader /> : <Card catalogoItem={item} />}
+    </MainLayout>
+  );
 }
